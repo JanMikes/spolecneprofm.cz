@@ -6,7 +6,10 @@
 <title>Společně pro Frýdek-Místek — komunální volby 2026</title>
 <meta name="description" content="Koalice KDU-ČSL, ODS, TOP 09 a STAN pro komunální volby 2026 ve Frýdku-Místku. Táhneme za jeden provaz — jen spolupráce přináší výsledky.">
 <meta name="theme-color" content="#00264a">
+<link rel="canonical" href="https://spolecneprofm.cz/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Společně pro Frýdek-Místek">
 <meta property="og:locale" content="cs_CZ">
 <meta property="og:url" content="https://spolecneprofm.cz/">
 <meta property="og:title" content="Společně pro Frýdek-Místek — komunální volby 2026">
@@ -15,12 +18,61 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Společně pro Frýdek-Místek — koalice KDU-ČSL, ODS, TOP 09 a STAN pro komunální volby 2026">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Společně pro Frýdek-Místek — komunální volby 2026">
 <meta name="twitter:description" content="Koalice KDU-ČSL, ODS, TOP 09 a STAN. Táhneme za jeden provaz.">
 <meta name="twitter:image" content="https://spolecneprofm.cz/assets/img/og-cover.png">
+<meta name="twitter:image:alt" content="Společně pro Frýdek-Místek — koalice KDU-ČSL, ODS, TOP 09 a STAN pro komunální volby 2026">
+
+<!-- Icons & manifest -->
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Preload the LCP-critical webfont weights (hero H1 = 900, body/lead = 400) so they
+     download in parallel with the stylesheet instead of after it -->
+<link rel="preload" href="assets/fonts/RedHatDisplay-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/RedHatDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
 <link rel="stylesheet" href="css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "PoliticalParty",
+      "@id": "https://spolecneprofm.cz/#organization",
+      "name": "Společně pro Frýdek-Místek",
+      "alternateName": "Společně pro F-M",
+      "description": "Koalice KDU-ČSL, ODS, TOP 09 a STAN pro komunální volby 2026 ve Frýdku-Místku. Táhneme za jeden provaz.",
+      "url": "https://spolecneprofm.cz/",
+      "logo": "https://spolecneprofm.cz/assets/img/logo-symbol.svg",
+      "image": "https://spolecneprofm.cz/assets/img/og-cover.png",
+      "email": "info@spolecnefm.cz",
+      "areaServed": { "@type": "City", "name": "Frýdek-Místek" },
+      "member": [
+        { "@type": "PoliticalParty", "name": "KDU-ČSL" },
+        { "@type": "PoliticalParty", "name": "ODS" },
+        { "@type": "PoliticalParty", "name": "TOP 09" },
+        { "@type": "PoliticalParty", "name": "STAN" }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://spolecneprofm.cz/#website",
+      "url": "https://spolecneprofm.cz/",
+      "name": "Společně pro Frýdek-Místek",
+      "inLanguage": "cs",
+      "publisher": { "@id": "https://spolecneprofm.cz/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -725,7 +777,7 @@
     </div>
     <div class="news" data-news>
       <article class="news-card news-card--featured" data-category="Doprava">
-          <div class="news-card__media"><img src="assets/img/news-doprava.jpg" alt="Nová pravidla parkování v centru" loading="lazy" width="900" height="560"></div>
+          <div class="news-card__media"><picture><source type="image/webp" srcset="assets/img/news-doprava.webp"><img src="assets/img/news-doprava.jpg" alt="Nová pravidla parkování v centru" loading="lazy" decoding="async" width="900" height="560"></picture></div>
           <div class="news-card__body">
             <div class="news-card__meta">
               <span class="pill pill--outline"><span class="pill__dot" style="background:var(--c-cyan)"></span>Doprava</span>
@@ -738,7 +790,7 @@
         </article>
       <div class="news-grid">
         <article class="news-card" data-category="Setkání">
-          <div class="news-card__media"><img src="assets/img/news-setkani.jpg" alt="Sešli jsme se s občany na náměstí" loading="lazy" width="900" height="560"></div>
+          <div class="news-card__media"><picture><source type="image/webp" srcset="assets/img/news-setkani.webp"><img src="assets/img/news-setkani.jpg" alt="Sešli jsme se s občany na náměstí" loading="lazy" decoding="async" width="900" height="560"></picture></div>
           <div class="news-card__body">
             <div class="news-card__meta">
               <span class="pill pill--outline"><span class="pill__dot" style="background:var(--c-yellow)"></span>Setkání</span>
@@ -750,7 +802,7 @@
           </div>
         </article>
         <article class="news-card" data-category="Školství">
-          <div class="news-card__media"><img src="assets/img/news-skolstvi.jpg" alt="Podpora pro místní školy a školky" loading="lazy" width="900" height="560"></div>
+          <div class="news-card__media"><picture><source type="image/webp" srcset="assets/img/news-skolstvi.webp"><img src="assets/img/news-skolstvi.jpg" alt="Podpora pro místní školy a školky" loading="lazy" decoding="async" width="900" height="560"></picture></div>
           <div class="news-card__body">
             <div class="news-card__meta">
               <span class="pill pill--outline"><span class="pill__dot" style="background:var(--c-magenta)"></span>Školství</span>
@@ -762,7 +814,7 @@
           </div>
         </article>
         <article class="news-card" data-category="Sport">
-          <div class="news-card__media"><img src="assets/img/news-sport.jpg" alt="Nové workoutové hřiště v Lískovci" loading="lazy" width="900" height="560"></div>
+          <div class="news-card__media"><picture><source type="image/webp" srcset="assets/img/news-sport.webp"><img src="assets/img/news-sport.jpg" alt="Nové workoutové hřiště v Lískovci" loading="lazy" decoding="async" width="900" height="560"></picture></div>
           <div class="news-card__body">
             <div class="news-card__meta">
               <span class="pill pill--outline"><span class="pill__dot" style="background:var(--c-red)"></span>Sport</span>
@@ -774,7 +826,7 @@
           </div>
         </article>
         <article class="news-card" data-category="Kultura">
-          <div class="news-card__media"><img src="assets/img/news-kultura.jpg" alt="Podpořili jsme městské slavnosti" loading="lazy" width="900" height="560"></div>
+          <div class="news-card__media"><picture><source type="image/webp" srcset="assets/img/news-kultura.webp"><img src="assets/img/news-kultura.jpg" alt="Podpořili jsme městské slavnosti" loading="lazy" decoding="async" width="900" height="560"></picture></div>
           <div class="news-card__body">
             <div class="news-card__meta">
               <span class="pill pill--outline"><span class="pill__dot" style="background:var(--c-navy)"></span>Kultura</span>
@@ -786,7 +838,7 @@
           </div>
         </article>
         <article class="news-card" data-category="Doprava">
-          <div class="news-card__media"><img src="assets/img/news-prechody.jpg" alt="Bezpečnější přechody u základních škol" loading="lazy" width="900" height="560"></div>
+          <div class="news-card__media"><picture><source type="image/webp" srcset="assets/img/news-prechody.webp"><img src="assets/img/news-prechody.jpg" alt="Bezpečnější přechody u základních škol" loading="lazy" decoding="async" width="900" height="560"></picture></div>
           <div class="news-card__body">
             <div class="news-card__meta">
               <span class="pill pill--outline"><span class="pill__dot" style="background:var(--c-cyan)"></span>Doprava</span>
@@ -840,7 +892,7 @@
         <div class="proc__photo-col">
           <div class="proc__track" data-proc-track-photo>
           <div class="proc__photo-slide">
-            <img class="proc__bust" src="assets/photos/Sikora-bust.png" alt="Marcel Sikora">
+            <img class="proc__bust" src="assets/photos/Sikora-bust.webp" alt="Marcel Sikora" loading="lazy" decoding="async" fetchpriority="low" width="820" height="814">
             <div class="proc__party"><span class="proc__party-mark"><span></span></span><span class="proc__party-name">KDU-ČSL</span></div>
           </div>
           <div class="proc__photo-slide">

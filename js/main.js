@@ -203,12 +203,16 @@
   /* ----------------------------------------------------------------- Boot */
   function boot() {
     initMobileMenu();
-    buildMapTexture();
     initOrbit();
     initCardSlider();
     initTable();
     initNewsFilter();
     initProcSlider();
+    // Decorative full-viewport SVG weave (opacity .16, mix-blend-mode). Purely cosmetic,
+    // and parse/paint-heavy, so build it off the critical path — never block first paint
+    // or the initial interaction window. Final appearance is unchanged.
+    var idle = window.requestIdleCallback || function (cb) { return window.setTimeout(cb, 1); };
+    idle(buildMapTexture);
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

@@ -6,17 +6,17 @@
    =========================================================================== */
 
 /* ------------------------------------------------------------------ Fonts */
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Light.ttf") format("truetype");      font-weight:300; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Regular.ttf") format("truetype");    font-weight:400; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Medium.ttf") format("truetype");     font-weight:500; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-SemiBold.ttf") format("truetype");   font-weight:600; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Bold.ttf") format("truetype");       font-weight:700; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-ExtraBold.ttf") format("truetype");  font-weight:800; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Black.ttf") format("truetype");      font-weight:900; font-style:normal; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Italic.ttf") format("truetype");       font-weight:400; font-style:italic; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-BoldItalic.ttf") format("truetype");   font-weight:700; font-style:italic; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-ExtraBoldItalic.ttf") format("truetype"); font-weight:800; font-style:italic; font-display:swap; }
-@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-BlackItalic.ttf") format("truetype");  font-weight:900; font-style:italic; font-display:swap; }
+/* Self-hosted Red Hat Display, subset to Latin + Czech (Latin Ext-A) and served as WOFF2.
+   Only the 7 upright weights actually used in this sheet, plus the single italic face
+   (.hero__quote, 800 italic), are declared. Unused italics were removed. */
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Light.woff2") format("woff2");           font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Regular.woff2") format("woff2");         font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Medium.woff2") format("woff2");          font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-SemiBold.woff2") format("woff2");        font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Bold.woff2") format("woff2");            font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-ExtraBold.woff2") format("woff2");       font-weight:800; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-Black.woff2") format("woff2");           font-weight:900; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Display"; src:url("../assets/fonts/RedHatDisplay-ExtraBoldItalic.woff2") format("woff2"); font-weight:800; font-style:italic; font-display:swap; }
 
 /* ------------------------------------------------------------- Design tokens */
 :root {
