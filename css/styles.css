@@ -230,12 +230,10 @@ button { font-family:inherit; }
 .hero__lead {
   margin:0; font-weight:400; font-size:16px; line-height:1.62;
   color:rgba(255,255,255,.94); max-width:560px; text-wrap:pretty;
-  text-shadow:0 1px 3px rgba(0,21,53,.32);
 }
 .hero__quote {
   margin:6px 0 0; font-style:italic; font-weight:800; font-size:clamp(26px,3.2vw,40px);
   line-height:1.1; letter-spacing:-.01em; color:#fff;
-  text-shadow:0 1px 4px rgba(0,21,53,.28);
 }
 .hero__cta { margin-top:10px; }
 
