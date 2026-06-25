@@ -9,27 +9,6 @@
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
-  /* ----------------------------------------------------- Hero map texture */
-  // Recreates MapTexture from kit.jsx — a faint Frýdek-Místek street-map weave.
-  function buildMapTexture() {
-    var svg = $("[data-map-texture]");
-    if (!svg) return;
-    var paths = "";
-    var i, y, x;
-    for (i = 0; i < 26; i++) {
-      y = i * 46 + (i % 3) * 8;
-      paths += '<path d="M-20,' + y + ' Q360,' + (y - 30) + ' 760,' + (y + 10) + ' T1480,' + (y - 12) + '"/>';
-    }
-    for (i = 0; i < 22; i++) {
-      x = i * 70 + (i % 2) * 14;
-      paths += '<path d="M' + x + ',-20 Q' + (x + 26) + ',300 ' + (x - 10) + ',640 T' + (x + 20) + ',1100"/>';
-    }
-    // viewBox covers the full extent the loops draw (x up to ~1504, y up to ~1160)
-    // so preserveAspectRatio="…slice" tiles the weave across the whole hero.
-    svg.setAttribute("viewBox", "0 0 1500 1160");
-    svg.innerHTML = paths;
-  }
-
   /* -------------------------------------------------------- Hero orbit ring */
   // Mouse-driven rotation, mirrors Homepage.dc.html's componentDidMount handler.
   function initOrbit() {
@@ -208,11 +187,6 @@
     initTable();
     initNewsFilter();
     initProcSlider();
-    // Decorative full-viewport SVG weave (opacity .16, mix-blend-mode). Purely cosmetic,
-    // and parse/paint-heavy, so build it off the critical path — never block first paint
-    // or the initial interaction window. Final appearance is unchanged.
-    var idle = window.requestIdleCallback || function (cb) { return window.setTimeout(cb, 1); };
-    idle(buildMapTexture);
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
