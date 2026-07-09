@@ -462,10 +462,8 @@ button { font-family:inherit; }
 .proc__initials { width:168px; height:168px; border-radius:50%; background:#fff; display:inline-flex; align-items:center; justify-content:center; flex:none; box-shadow:var(--shadow-md); }
 .proc__initials span { font-weight:900; font-size:60px; color:var(--c-navy); letter-spacing:.02em; }
 .proc__person { font-weight:800; font-size:18px; color:#fff; text-align:center; text-shadow:0 1px 3px rgba(0,0,0,.2); }
-.proc__party { position:absolute; top:26px; right:30px; z-index:2; display:inline-flex; align-items:center; gap:8px; }
-.proc__party-mark { width:30px; height:30px; border-radius:50%; border:2px solid #fff; display:inline-flex; align-items:center; justify-content:center; flex:none; }
-.proc__party-mark span { width:11px; height:11px; border-radius:50%; background:#fff; }
-.proc__party-name { font-weight:900; font-size:19px; letter-spacing:.02em; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.22); }
+.proc__party { position:absolute; top:34px; right:40px; z-index:3; display:inline-flex; align-items:center; }
+.proc__party-logo { width:auto; max-width:160px; object-fit:contain; display:block; filter:brightness(0) invert(1); }
 .proc__nav { position:absolute; bottom:20px; width:50px; height:50px; border-radius:50%; border:none; cursor:pointer; background:#fff; color:var(--c-navy); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md); z-index:3; transition:filter .14s var(--ease-out); }
 .proc__nav:hover { filter:brightness(.95); }
 .proc__nav--prev { right:80px; }
