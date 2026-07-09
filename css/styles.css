@@ -240,9 +240,10 @@ button { font-family:inherit; }
 .orbit { position:relative; width:600px; height:600px; flex:none; }
 .orbit__ring { position:absolute; inset:0; will-change:transform; }
 .orbit__ring svg { position:absolute; inset:0; overflow:visible; }
-/* Orbiting party marks — rotate with the ring, kept upright by .hp-spin-fix */
-.hp-orbit-item { will-change:transform; transition:transform .45s cubic-bezier(.2,.7,.3,1); }
-.hp-spin-fix { display:inline-flex; align-items:center; justify-content:center; will-change:transform; transition:transform 3s cubic-bezier(.2,.7,.3,1); }
+/* Orbiting party marks — rotate with the ring, kept upright by .hp-spin-fix.
+   Rotation is smoothed per-frame in JS (initOrbit); no CSS transition here so
+   there is no interrupted-transition ghosting. */
+.hp-spin-fix { display:inline-flex; align-items:center; justify-content:center; will-change:transform; }
 .hp-float { will-change:transform; }
 .hp-orbit-item img, .hp-orbit-item span { transition:transform .3s cubic-bezier(.2,.7,.3,1), filter .3s cubic-bezier(.2,.7,.3,1); }
 .hp-orbit-item span { display:inline-block; }

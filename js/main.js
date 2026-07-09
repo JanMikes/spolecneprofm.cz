@@ -19,10 +19,19 @@
     var poly = ring.querySelector("polygon");
     var dots = ring.querySelectorAll("circle");
     var svg = poly ? poly.ownerSVGElement : null;
+    var fix = ring.querySelectorAll(".hp-spin-fix");
     var baseVx = [300, 475.9, 408.7, 191.3, 124.1];
     var baseVy = [115, 242.8, 449.7, 449.7, 242.8];
     var off = [0, 0, 0, 0, 0], tgt = [0, 0, 0, 0, 0], pull = 34;
-    var cursor = null, lx = null, ly = null, rot = null, fix = null;
+    var cursor = null, lx = null, ly = null;
+    var rot = 0, targetRot = 0, haveRot = false;
+
+    // Smooth the rotation in JS on the single rAF loop rather than via CSS
+    // transitions. The ring and every counter-rotating mark are written the same
+    // frame to exactly opposite angles, so they never desync and there is no
+    // interrupted-transition repaint ghosting (the faint "double logo" artefact).
+    ring.style.transition = "none";
+    for (var t0 = 0; t0 < fix.length; t0++) fix[t0].style.transition = "none";
 
     function loop() {
       if (svg && cursor) {
@@ -52,6 +61,14 @@
         if (dots[i]) { dots[i].setAttribute("cx", x.toFixed(1)); dots[i].setAttribute("cy", y.toFixed(1)); }
       }
       if (poly) poly.setAttribute("points", pts.join(" "));
+
+      if (haveRot) {
+        rot += (targetRot - rot) * 0.05;
+        if (Math.abs(targetRot - rot) < 0.01) rot = targetRot;
+        ring.style.transform = "rotate(" + rot.toFixed(2) + "deg)";
+        var neg = (-rot).toFixed(2);
+        for (var s = 0; s < fix.length; s++) fix[s].style.transform = "rotate(" + neg + "deg)";
+      }
       requestAnimationFrame(loop);
     }
 
@@ -60,13 +77,10 @@
       var w = window.innerWidth || 1, h = window.innerHeight || 1;
       var nx = (e.clientX / w) - 0.5, ny = (e.clientY / h) - 0.5;
       var r = (Math.atan2(ny, nx) * 180 / Math.PI) + 90;
-      if (rot == null) rot = r;
-      var delta = ((r - rot + 540) % 360) - 180;
-      rot += delta;
-      ring.style.transform = "rotate(" + rot + "deg)";
-      if (!fix) fix = document.querySelectorAll(".hp-spin-fix");
-      for (var i = 0; i < fix.length; i++) fix[i].style.transform = "rotate(" + (-rot) + "deg)";
+      if (!haveRot) { rot = targetRot = r; haveRot = true; }
+      else { targetRot += ((r - targetRot + 540) % 360) - 180; } // shortest-path unwrap
     }, { passive: true });
+
     requestAnimationFrame(loop);
   }
 
