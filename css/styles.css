@@ -331,12 +331,12 @@ button { font-family:inherit; }
   box-shadow:var(--shadow-sm);
 }
 .cand-row__avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
-.cand-row__body { min-width:0; line-height:1.2; }
-.cand-row__name { display:block; font-size:15.5px; color:var(--c-navy); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cand-row__body { min-width:0; line-height:1.3; }
+.cand-row__name { display:block; font-size:15.5px; color:var(--c-navy); overflow-wrap:break-word; }
 .cand-row__rank { font-weight:800; color:var(--accent); }
 .cand-row__given { font-weight:400; }
 .cand-row__surname { font-weight:800; }
-.cand-row__role { display:block; font-size:13px; color:var(--ink-muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cand-row__role { display:block; font-size:13px; color:var(--ink-muted); margin-top:2px; overflow-wrap:break-word; }
 .cand-table-foot { display:flex; flex-direction:column; align-items:flex-end; gap:14px; margin-top:30px; }
 .cand-count { font-size:13px; font-weight:600; letter-spacing:.04em; color:var(--ink-muted); }
 .cand-actions { display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end; }
