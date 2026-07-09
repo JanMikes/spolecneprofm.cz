@@ -238,25 +238,27 @@ button { font-family:inherit; }
 
 /* Hero orbit */
 .orbit { position:relative; width:600px; height:600px; flex:none; }
-.orbit__ring { position:absolute; inset:0; transition:transform .35s cubic-bezier(.2,.7,.3,1); will-change:transform; }
+.orbit__ring { position:absolute; inset:0; will-change:transform; }
 .orbit__ring svg { position:absolute; inset:0; overflow:visible; }
-.orbit__node {
-  position:absolute; width:116px; height:116px; display:flex; align-items:center; justify-content:center;
-}
-.orbit__node img { height:80px; width:auto; display:block; filter:brightness(0) invert(1); opacity:.95; }
-.orbit__core {
-  position:absolute; left:222px; top:222px; width:156px; height:156px; border-radius:50%;
-  background:#fff; display:flex; align-items:center; justify-content:center;
-  box-shadow:0 0 0 6px rgba(255,255,255,.35), 0 20px 44px rgba(0,21,53,.32);
-}
-.orbit__core img { height:86px; width:auto; display:block; }
+/* Orbiting party marks — rotate with the ring, kept upright by .hp-spin-fix */
+.hp-orbit-item { will-change:transform; transition:transform .45s cubic-bezier(.2,.7,.3,1); }
+.hp-spin-fix { display:inline-flex; align-items:center; justify-content:center; will-change:transform; transition:transform 3s cubic-bezier(.2,.7,.3,1); }
+.hp-float { will-change:transform; }
+.hp-orbit-item img, .hp-orbit-item span { transition:transform .3s cubic-bezier(.2,.7,.3,1), filter .3s cubic-bezier(.2,.7,.3,1); }
+.hp-orbit-item span { display:inline-block; }
+.hp-orbit-item:hover img { transform:scale(1.16); filter:brightness(0) invert(1) drop-shadow(0 6px 18px rgba(255,255,255,.55))!important; }
+.hp-orbit-item:hover span { transform:scale(1.08); text-shadow:0 4px 18px rgba(255,255,255,.5); }
 
-/* hero entrance animations */
+/* hero entrance + float animations */
 @keyframes hpPop { from { opacity:0; transform:scale(.6); } }
 @keyframes hpRise { from { opacity:0; transform:translateY(22px); } }
+@keyframes hpFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+@keyframes hpFloatCtr { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-6px) scale(1.02); } }
 @media (prefers-reduced-motion: no-preference) {
   .hp-pop { animation:hpPop .6s cubic-bezier(.2,.7,.3,1) backwards; }
   .hp-rise { animation:hpRise .7s cubic-bezier(.2,.7,.3,1) backwards; }
+  .hp-float { animation:hpFloat 6s ease-in-out infinite; }
+  .hp-float-ctr { animation:hpFloatCtr 7s ease-in-out infinite; }
 }
 
 /* ------------------------------------------------------------------ Stats */
@@ -547,4 +549,28 @@ button { font-family:inherit; }
   .cand-actions .btn { flex:1; }
   .hero__title { font-size:clamp(40px,13vw,72px); }
   .hero__lead { font-size:15px; }
+}
+
+/* ------------------------------------------------------------------ Soutěž */
+.soutez-intro { margin:0; max-width:720px; font-size:18px; line-height:1.65; color:var(--ink-muted); text-wrap:pretty; }
+.soutez-part { margin-top:64px; }
+.soutez-sub { margin:0 0 24px; font-weight:900; font-size:clamp(22px,2.4vw,30px); letter-spacing:-.01em; text-transform:uppercase; color:var(--c-navy); }
+.soutez-sub--lg { font-size:clamp(26px,3vw,40px); letter-spacing:-.02em; }
+.soutez-akce { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; column-gap:48px; }
+.soutez-akce li { display:flex; align-items:baseline; gap:18px; padding:16px 0; border-bottom:1px solid var(--paper-200); }
+.soutez-akce__date { font-weight:800; font-size:15px; color:var(--accent); min-width:92px; flex:none; }
+.soutez-akce__title { font-weight:700; font-size:17px; line-height:1.3; color:var(--c-navy); }
+.soutez-how { margin-top:64px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.soutez-how__text { display:flex; flex-direction:column; gap:18px; }
+.soutez-how__text p { margin:0; font-size:17px; line-height:1.65; color:var(--ink-muted); text-wrap:pretty; }
+.soutez-how__text strong { color:var(--c-navy); }
+.soutez-card { width:100%; height:auto; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); display:block; }
+.soutez-prizes { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.soutez-prizes li { display:flex; align-items:center; gap:20px; background:var(--paper-50); border-radius:var(--r-lg); padding:20px 24px; }
+.soutez-prize__num { width:40px; height:40px; border-radius:11px; background:var(--grad-brand); color:#fff; font-weight:900; font-size:18px; display:inline-flex; align-items:center; justify-content:center; flex:none; }
+.soutez-prize__text { font-weight:700; font-size:clamp(17px,1.7vw,21px); color:var(--c-navy); }
+.soutez-gdpr { margin:56px 0 0; font-size:13.5px; line-height:1.6; color:var(--ink-muted); text-wrap:pretty; }
+.soutez-gdpr a { color:var(--accent); }
+@media (max-width:760px) {
+  .soutez-akce, .soutez-how { grid-template-columns:1fr; }
 }

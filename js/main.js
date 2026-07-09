@@ -10,16 +10,64 @@
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
   /* -------------------------------------------------------- Hero orbit ring */
-  // Mouse-driven rotation, mirrors Homepage.dc.html's componentDidMount handler.
+  // Ported from Homepage.dc.html: the pentagon vertex nearest the cursor reaches
+  // toward it, the ring rotates to face the cursor, and each mark counter-rotates
+  // (.hp-spin-fix) so logos stay upright.
   function initOrbit() {
     var ring = $("[data-orbit-ring]");
     if (!ring || reduceMotion) return;
-    on(window, "mousemove", function (ev) {
+    var poly = ring.querySelector("polygon");
+    var dots = ring.querySelectorAll("circle");
+    var svg = poly ? poly.ownerSVGElement : null;
+    var baseVx = [300, 475.9, 408.7, 191.3, 124.1];
+    var baseVy = [115, 242.8, 449.7, 449.7, 242.8];
+    var off = [0, 0, 0, 0, 0], tgt = [0, 0, 0, 0, 0], pull = 34;
+    var cursor = null, lx = null, ly = null, rot = null, fix = null;
+
+    function loop() {
+      if (svg && cursor) {
+        var m = svg.getScreenCTM();
+        if (m) {
+          var inv = m.inverse();
+          lx = cursor.x * inv.a + cursor.y * inv.c + inv.e;
+          ly = cursor.x * inv.b + cursor.y * inv.d + inv.f;
+          var best = 0, bd = Infinity;
+          for (var k = 0; k < 5; k++) {
+            var dd = (baseVx[k] - lx) * (baseVx[k] - lx) + (baseVy[k] - ly) * (baseVy[k] - ly);
+            if (dd < bd) { bd = dd; best = k; }
+          }
+          for (var j = 0; j < 5; j++) tgt[j] = j === best ? 1 : 0;
+        }
+      }
+      var pts = [];
+      for (var i = 0; i < 5; i++) {
+        off[i] += (tgt[i] - off[i]) * 0.09;
+        var x = baseVx[i], y = baseVy[i];
+        if (off[i] > 0.002 && lx != null) {
+          var dx = lx - x, dy = ly - y, L = Math.hypot(dx, dy) || 1;
+          x += off[i] * pull * dx / L;
+          y += off[i] * pull * dy / L;
+        }
+        pts.push(x.toFixed(1) + "," + y.toFixed(1));
+        if (dots[i]) { dots[i].setAttribute("cx", x.toFixed(1)); dots[i].setAttribute("cy", y.toFixed(1)); }
+      }
+      if (poly) poly.setAttribute("points", pts.join(" "));
+      requestAnimationFrame(loop);
+    }
+
+    on(window, "mousemove", function (e) {
+      cursor = { x: e.clientX, y: e.clientY };
       var w = window.innerWidth || 1, h = window.innerHeight || 1;
-      var nx = (ev.clientX / w) - 0.5;
-      var ny = (ev.clientY / h) - 0.5;
-      ring.style.transform = "rotate(" + ((nx * 40) + (ny * 12)) + "deg)";
+      var nx = (e.clientX / w) - 0.5, ny = (e.clientY / h) - 0.5;
+      var r = (Math.atan2(ny, nx) * 180 / Math.PI) + 90;
+      if (rot == null) rot = r;
+      var delta = ((r - rot + 540) % 360) - 180;
+      rot += delta;
+      ring.style.transform = "rotate(" + rot + "deg)";
+      if (!fix) fix = document.querySelectorAll(".hp-spin-fix");
+      for (var i = 0; i < fix.length; i++) fix[i].style.transform = "rotate(" + (-rot) + "deg)";
     }, { passive: true });
+    requestAnimationFrame(loop);
   }
 
   /* --------------------------------------------------- Candidate card slider */
