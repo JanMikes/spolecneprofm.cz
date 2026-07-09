@@ -323,7 +323,7 @@ button { font-family:inherit; }
 
 /* ---------------------------------------------------- Candidate name table */
 .cand-table { display:grid; grid-template-columns:repeat(3,1fr); column-gap:28px; row-gap:0; }
-.cand-row { display:flex; align-items:center; gap:14px; padding:12px 6px; border-bottom:1px solid var(--paper-200); }
+.cand-row { display:flex; align-items:center; gap:14px; min-width:0; padding:12px 6px; border-bottom:1px solid var(--paper-200); }
 .cand-row.is-hidden { display:none; }
 .cand-row__avatar {
   width:56px; height:56px; border-radius:50%; flex:none; display:inline-flex; align-items:center;
