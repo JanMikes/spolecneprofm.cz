@@ -154,12 +154,11 @@
   function initProcSlider() {
     var root = $("[data-proc]");
     if (!root) return;
-    var textTrack = $("[data-proc-track-text]", root);
-    var photoTrack = $("[data-proc-track-photo]", root);
+    var track = $("[data-proc-track]", root);
     var dots = $$("[data-proc-dots] .proc__dot", root);
     var prev = $("[data-proc-prev]", root);
     var next = $("[data-proc-next]", root);
-    var count = textTrack ? textTrack.children.length : 0;
+    var count = track ? track.children.length : 0;
     if (!count) return;
 
     var STORE = "spf_reason_idx";
@@ -171,9 +170,7 @@
 
     function show(n) {
       idx = ((n % count) + count) % count;
-      var pct = idx * 100;
-      if (textTrack) textTrack.style.transform = "translateX(-" + pct + "%)";
-      if (photoTrack) photoTrack.style.transform = "translateX(-" + pct + "%)";
+      if (track) track.style.transform = "translateX(-" + (idx * 100) + "%)";
       dots.forEach(function (d, k) { d.setAttribute("aria-current", k === idx ? "true" : "false"); });
       try { window.localStorage.setItem(STORE, String(idx)); } catch (e) {}
     }
