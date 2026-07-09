@@ -227,6 +227,22 @@
     on(window, "resize", function () { if (window.innerWidth > 1000) setOpen(false); });
   }
 
+  /* ----------------------------------------------- Upcoming events highlight */
+  // Mirrors UpcomingEvents from kit.jsx: the soonest still-upcoming event is
+  // "filled" and flagged, past events are dimmed.
+  function initEvents() {
+    var cards = $$(".event-card[data-iso]");
+    if (!cards.length) return;
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var nextIdx = -1, nextTime = Infinity;
+    cards.forEach(function (c, i) {
+      var d = new Date(c.getAttribute("data-iso") + "T00:00:00");
+      if (d < today) c.classList.add("event-card--past");
+      else if (d.getTime() < nextTime) { nextTime = d.getTime(); nextIdx = i; }
+    });
+    if (nextIdx >= 0) cards[nextIdx].classList.add("event-card--next");
+  }
+
   /* ----------------------------------------------------------------- Boot */
   function boot() {
     initMobileMenu();
@@ -235,6 +251,7 @@
     initTable();
     initNewsFilter();
     initProcSlider();
+    initEvents();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
