@@ -571,3 +571,107 @@ button { font-family:inherit; }
 /* Events grid responsive */
 @media (max-width:1000px) { .events-grid { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:640px)  { .events-grid { grid-template-columns:1fr; } }
+
+/* ---------------------------------------------------------- Volební program */
+/* program.html — hero, sticky area chips, 13 area cards (3 priorities + native
+   <details> for the rest), navy CTA band. Card accent cycles magenta → cyan →
+   navy → yellow via modifier classes; the "more" link uses a darkened ink so
+   cyan/yellow stay readable on white. */
+:root { --topbar-h:89px; } /* .topbar__inner 88px + 1px border; chips stick right below it */
+.prog-hero { position:relative; overflow:hidden; background:var(--grad-brand); color:#fff; }
+.prog-hero__lines { position:absolute; inset:0; width:100%; height:100%; opacity:.16; mix-blend-mode:soft-light; pointer-events:none; }
+.prog-hero__wrap {
+  position:relative; z-index:1; max-width:var(--container); margin:0 auto;
+  padding:104px var(--gutter) 96px; display:flex; flex-direction:column; align-items:flex-start; gap:24px;
+}
+.prog-hero__title {
+  margin:0; font-weight:900; font-size:clamp(46px,6.4vw,86px); line-height:1;
+  letter-spacing:-.02em; text-transform:uppercase; color:#fff;
+}
+.prog-hero__lead { margin:0; max-width:640px; font-size:17px; line-height:1.62; color:rgba(255,255,255,.94); text-wrap:pretty; }
+.prog-hero__cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:12px; }
+
+/* Sticky chip navigation of the 13 areas */
+.prog-nav {
+  position:sticky; top:var(--topbar-h); z-index:40;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--paper-200);
+}
+.prog-nav__inner { max-width:var(--container); margin:0 auto; padding:14px var(--gutter); display:flex; gap:8px; flex-wrap:wrap; }
+.prog-chip {
+  display:inline-flex; align-items:center; border:1px solid var(--paper-200); border-radius:var(--r-pill);
+  padding:7px 15px; font-weight:600; font-size:13px; line-height:1.3; color:var(--c-navy); background:#fff; white-space:nowrap;
+  transition:background .14s var(--ease-out), color .14s var(--ease-out), border-color .14s var(--ease-out);
+}
+.prog-chip:hover { background:var(--c-navy); color:#fff; border-color:var(--c-navy); }
+
+/* Area cards */
+.prog-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; }
+.prog-card {
+  --prog-accent:var(--c-magenta); --prog-ink:var(--c-magenta);
+  scroll-margin-top:calc(var(--topbar-h) + 80px);
+  display:flex; flex-direction:column; background:#fff; border-radius:var(--r-lg);
+  box-shadow:var(--shadow-sm); overflow:hidden;
+  transition:box-shadow .3s var(--ease-out), transform .3s var(--ease-out);
+}
+.prog-card:hover { box-shadow:0 18px 44px rgba(0,38,74,.13); transform:translateY(-2px); }
+.prog-card--cyan   { --prog-accent:var(--c-cyan);   --prog-ink:#1a94c0; }
+.prog-card--navy   { --prog-accent:var(--c-navy);   --prog-ink:var(--c-navy); }
+.prog-card--yellow { --prog-accent:var(--c-yellow); --prog-ink:#9a7600; }
+.prog-card__bar { height:6px; background:var(--prog-accent); flex:none; }
+.prog-card__body { padding:30px 32px 28px; display:flex; flex-direction:column; gap:20px; }
+.prog-card__head { display:flex; align-items:flex-start; gap:14px; }
+.prog-card__num { flex:none; font-weight:900; font-size:15px; letter-spacing:.04em; color:var(--prog-accent); padding-top:5px; }
+.prog-card--yellow .prog-card__num { color:var(--c-navy); }
+.prog-card__title {
+  margin:0; font-weight:900; font-size:26px; line-height:1.14; letter-spacing:-.01em;
+  text-transform:uppercase; color:var(--c-navy); text-wrap:balance;
+}
+.prog-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.prog-list li { display:flex; gap:12px; align-items:flex-start; font-size:17px; line-height:1.55; color:var(--text-body); text-wrap:pretty; }
+.prog-list li::before { content:""; flex:none; width:7px; height:7px; border-radius:50%; background:var(--prog-accent); margin-top:9px; }
+.prog-list--more { margin-top:18px; gap:12px; }
+.prog-list--more li { font-size:16px; line-height:1.5; }
+.prog-list--more li::before { background:var(--paper-300); margin-top:8px; }
+
+/* "Další N body" — native <details>, marker hidden, label swaps when open */
+.prog-more {
+  list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  font-weight:700; font-size:14px; letter-spacing:.02em; color:var(--prog-ink);
+  transition:opacity .14s var(--ease-out);
+}
+.prog-more::-webkit-details-marker { display:none; }
+.prog-more:hover { opacity:.72; }
+.prog-more__caret { flex:none; transition:transform .25s var(--ease-out); }
+.prog-more__open { display:none; }
+.prog-details[open] > .prog-more .prog-more__caret { transform:rotate(180deg); }
+.prog-details[open] > .prog-more .prog-more__closed { display:none; }
+.prog-details[open] > .prog-more .prog-more__open { display:inline; }
+
+/* Navy CTA band */
+.prog-cta { background:var(--c-navy); color:#fff; }
+.prog-cta__inner {
+  max-width:var(--container); margin:0 auto; padding:72px var(--gutter);
+  display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+}
+.prog-cta__text { display:flex; flex-direction:column; gap:10px; max-width:620px; }
+.prog-cta__title { margin:0; font-weight:900; font-size:clamp(28px,3.2vw,40px); line-height:1.06; letter-spacing:-.02em; text-transform:uppercase; color:#fff; }
+.prog-cta__desc { margin:0; font-size:16px; line-height:1.6; color:rgba(255,255,255,.8); text-wrap:pretty; }
+
+@media (max-width:1000px) {
+  .prog-grid { grid-template-columns:1fr; }
+}
+@media (max-width:760px) {
+  :root { --topbar-h:73px; } /* .topbar__inner 72px + border */
+  .prog-hero__wrap { padding:72px var(--gutter) 64px; }
+  /* chips: one horizontally scrollable row instead of a tall wrapped block */
+  .prog-nav__inner { flex-wrap:nowrap; overflow-x:auto; padding-top:10px; padding-bottom:10px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .prog-nav__inner::-webkit-scrollbar { display:none; }
+  .prog-card { scroll-margin-top:calc(var(--topbar-h) + 64px); }
+  .prog-card__body { padding:24px 22px 22px; gap:16px; }
+  .prog-card__title { font-size:22px; }
+  .prog-list li { font-size:16px; }
+  .prog-cta__inner { padding:56px var(--gutter); }
+  .prog-cta__inner .btn { width:100%; }
+}

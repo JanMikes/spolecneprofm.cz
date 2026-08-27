@@ -1,6 +1,6 @@
 # Společně pro Frýdek-Místek
 
-Statická jednostránková kampaňová prezentace koalice **KDU-ČSL, ODS, TOP 09 a STAN**
+Statická kampaňová prezentace koalice **KDU-ČSL, ODS, TOP 09 a STAN**
 pro komunální volby 2026 ve Frýdku-Místku. *„Táhneme za jeden provaz!"*
 
 Web je plně statický (HTML + CSS + vanilla JS, bez build kroku) a je připravený
@@ -10,6 +10,8 @@ k nasazení na **GitHub Pages**.
 
 ```
 index.html          – kompletní homepage (jedna stránka)
+program.html        – volební program 2026–2030 (13 oblastí, rozbalovací body)
+soutez.html         – soutěž o ceny na letních akcích
 css/styles.css      – brand design tokeny + styly všech sekcí
 js/main.js          – interaktivita (slider, filtr, stránkování, orbit, mapa)
 assets/
@@ -32,6 +34,12 @@ assets/
 8. **Proč společně** – hlavní slider (auto-play 6 s, šipky, tečky, pauza při najetí)
 9. **Dokumenty ke stažení**
 10. **Patička** – kontakt, sítě, povinný zadavatel/zpracovatel řádek
+
+## Podstránky
+
+- **program.html** – Volební program 2026–2030: hero, lepivá navigace po 13 oblastech,
+  karty s třemi hlavními prioritami a nativně rozbalovacími (`<details>`) dalšími body, CTA „Držíme slovo“
+- **soutez.html** – Soutěž o ceny: termíny akcí, pravidla, ceny
 
 ## Lokální spuštění
 
